@@ -1,0 +1,21 @@
+version: "3"
+services:
+  web:
+    # replace username/repo:tag with your name and image details
+    image: vileda/donatr2
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+      resources:
+        limits:
+          cpus: "0.1"
+          memory: 128M
+    ports:
+      - "8080:8080"
+    networks:
+      - mete
+    volumes:
+      - "/home/fnord/donatr2:/code/db"
+networks:
+  mete:
